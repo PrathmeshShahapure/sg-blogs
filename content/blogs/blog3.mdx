@@ -1,0 +1,133 @@
+---
+slug: NHI-Remediation-and-Risk-Management
+title: "NHI Remediation and Risk Management: Closing the gaps before they close you"
+description: Explore why Non-Human Identities now outnumber humans in modern infrastructure—and how securing them is critical to preventing privilege abuse, blast-radius expansion, and compliance failures in interconnected systems.
+authors: [stackguard]
+date: 2025-09-28
+duration: 7 min read 
+tags:
+  - NHI
+  - governance
+  - risk
+  - compliance
+  - GRC
+  - least-privilege
+  - audit
+  - machine-identity
+---
+# NHI Remediation and Risk Management: Closing the gaps before they close you
+---
+Discovery is risk observation, Remediation is risk reduction. Discovery switches on the lights and exposes what's lurking in the shadows. Remediation cleans it up before it can do damage. Left unchecked, machine accounts, API tokens, service identities, and long-forgotten credentials accumulate and compound risk quietly, until one day they erupt as a breach headline. Remediation is where strategy meets reality - where the real action happens. 
+
+<!-- truncate -->
+### THE STAKES: Why Remediation demands urgency
+What’s common between the US Department of Defence, the FBI, the CIA, Apple, Google, Facebook,Trend Micro, Symantec, McAfee, HP, Cisco, McDonalds?
+
+All of the above have suffered from cybersecurity breaches. Cybersecurity is a fast-moving game, and the slightest oversight can balloon into something bigger. 
+
+NHIs are no longer marginal plumbing - they are the backbone of critical infrastructure. Yet, they remain critically vulnerable<sup>1</sup> :
+- **88%** of breaches stem from identity-based attacks
+- **74%** of organizations know or suspect NHIs have been compromised
+- **66%** of enterprises endured a successful cyberattack due to compromised NHIs
+- **97%** of NHIs are over-privileged
+- **91%** of former-employee tokens are active
+- **73%** of vaults are misconfigured
+- Only **5–15%** of organizations feel confident in their ability to secure NHIs
+
+
+It’s astonishingly common to find API keys leaked from a partner due to misconfigured integration settings - with read and write access to sensitive customer data.
+
+Legend tells of a financial system whose nightly backup script still used a service account from 2012 - and nobody knew who owned it until it was used to exfiltrate data one stormy Sunday. To add to the injury (and the irony), this was discovered by accident while migrating service providers.
+
+Regulatory pressures, customer expectations, and the cost of recovery add to the dangers of ignoring Risk Remediation. A lapse in machine identity control can cost as much in reputation as in dollars.
+
+### Remediation that developers love
+The fastest way to kill a remediation programme is to make developers feel it is an obstacle course. Policies are useless if they’re not followed. And they will not be followed if they make developers’ lives more difficult. 
+
+NHI remediation must therefore be engineered to run with development, not against it. Remediation controls need to be embedded directly into CI/CD pipelines and infrastructure-as-code templates. Secrets rotation, privilege pruning, and API-key revocation should occur automatically during normal deployment - rather than as a separate ticket. 
+
+Such a “security as plumbing” model removes the incentive for engineers to create shadow identities or bypass policies, while still satisfying governance and audit requirements. One multinational SaaS company found that when it moved to invisible rotation inside its build pipeline, developer pushback dropped to near zero and compliance metrics improved overnight. Another saw 80% fewer tickets after embedding rotation in their CI/CD cycle. 
+
+### Core Challenges in Remediation
+Organizations need to adapt dynamically and upgrade tactics on the go. It’s not uncommon to find NHIs that companies didn’t even know existed responsible for data breaches. When IT teams implement automated credential refresh for the first time, it’s common to discover hundreds of dormant or expired accounts nobody remembers. In one recent case at a large e-commerce company, the first refresh cycle revealed over 500 forgotten credentials for service accounts no current employee knew existed.
+
+Consider some major challenges faced by IT security teams today:
+- **Fear of breaking production**
+Rotating a critical secret or reassigning privileged access often causes outages - and outrages. Audit reports sound the alarm, developers shout “if it ain’t broke, don’t fix it”, and security teams hold their breath.
+
+
+- **Lack of business validation**
+Security teams are often unable to predict how their remediation rules will affect business workflows. By the time they find out, it is too late. 
+
+
+- **Privilege creep**
+What starts as a tightly scoped identity starts accumulating permissions (debug tokens, admin privileges, broader access) because nobody revisits them.
+
+
+- **Legacy and technical debt**
+Older systems often lack the APIs or modularity to support automated secrets management. Scripts are scattered, permissions are baked in, and documentation is stale.
+
+
+- **Lack of ownership** 
+When no one is explicitly responsible for rotating credentials, retiring identities, or auditing access - inertia wins. Many organizations discover after the fact that “nobody owns the service account for that thing”.
+
+
+- **Secret sprawl and hardcoded secrets**
+Credentials in GitHub repositories, environment variables, or shared folders are sadly still present even in large organizations.
+
+
+### Remediation done right
+The art of remediation lies in balancing speed, safety, and scale. Here are some best practices that can help create a robust, dependable NHI Remediation framework:
+- **Automatic secrets rotation and expiry**
+  - All tokens, certificates, and service credentials must have expiry dates by default
+  - Use vaults and credential-stores integrated into CI/CD pipelines
+
+
+- **Principle of Least Privilege**
+  - Replace broad roles with narrowly defined ones
+  - Introduce Just-In-Time (JIT) elevation of privileges (for example, for maintenance windows) so standing privileges are minimized
+
+- **Eliminate stale/zombie identities**
+  - Establish automatic retirement tied to resource or project decommissioning. If an application is retired, all associated service accounts, tokens, and credentials must go too.
+  - Maintain dynamic documentation of all identities and their owners
+
+
+- **Secure Storage and Secret Hygiene**
+  - Eliminate hardcoded secrets. Move every secret into a secure, managed vault.
+  - Enforce regular, automated scans of repositories and infrastructure for leftover secrets.
+
+
+- **Risk-Prioritized Remediation**
+  - Don’t treat all exposures equally. Score each identity by their blast radius: what systems they touch, what permissions they hold, and what data lies downstream.
+  - Focus first on high-impact identities: admin-level, cross-system privileges, or those with external access.
+
+
+
+### Remediation with validation 
+
+Remediation policies may look safe on paper, but can break critical processes if done blindly. Remediation needs to be paired with runtime business validation.
+
+This concept involves, to take one example, continuously testing whether a credential, token, or machine account is still genuinely needed by a live business function before it is retired or its permissions tightened. This avoids the classic “rotate and break production” nightmare. Modern NHI tools achieve this by mapping identities to real-time transaction flows, usage logs, and service dependencies, automatically flagging those that are dormant or over-privileged but still in use by high-value processes. 
+
+Last year, a misjudged API key rotation by a fintech company broke transaction processing for hours. Pairing remediation with runtime business validation could have prevented the outage.
+
+In effect, remediation becomes a dynamic, living control that understands the business impact of every change, thus reducing both risk and downtime.
+
+### Embedding remediation into culture
+Remediation cannot be a quarterly rush; it must be part of the rhythm of operations. If your remediation strategy feels like a chore to those enforcing it, it’s already too late. Build it into your culture, or attackers will build it into theirs.
+- **Build ownership** by assigning clear custodians for each identity and service account. Make someone the “account keeper”.
+
+
+- **Integrate remediations into deployment pipelines**, so fixes are code-reviewable and synced with operations.
+
+
+- **Track remediation metrics:** Mean time to rotate, number of stale accounts removed per month, percentage of identities at high risk still active, and so on.
+
+
+### Conclusion
+Remediation is the hinge on which NHI security and governance swing. Without it, the most sophisticated discovery tools and the best policies are like pavilions built without foundations.
+
+In an era where machine identities outnumber humans by more than 95:1, allowing credentials to linger is criminal oversight, and the ultimate own goal. Those who commit to disciplined, measurable, and automated remediation will reduce their attack surface, earn regulatory trust and customer confidence, and avoid being the cautionary tale shared at security conferences. 
+
+
+<sub><b>Source:</b> <sup>1 </sup>Sources: NHIMG, 2024 CyberArk Identity Security Threat Landscape Report, Cloud Security Alliance, 2024 ESG Survey REport</sub>

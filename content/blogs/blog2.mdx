@@ -1,0 +1,83 @@
+---
+slug: NHI-Detection-and-Discovery
+title: "NHI Detection and Discovery: Seeing the unseen before it sees you"
+description: Learn how to detect and discover Non-Human Identities across cloud and DevSecOps environments. This article explains why visibility is the foundation of security, governance, and least-privilege enforcement before risk silently expands.
+authors: [stackguard]
+date: 2025-09-14
+duration: 6 min read 
+tags:
+  - NHI
+  - machine-identity
+  - discovery
+  - detection
+  - secrets
+  - DevSecOps
+  - security
+  - blast-radius
+---
+
+---
+### You can’t secure what you can’t see
+The road to NHI security begins with a deceptively simple question:<i> Do you know how many machine identities exist in your organization?</i>
+
+If the answer is anything other than an exact number, prepare to join the majority of CISOs and DevOps Heads who experience quiet existential dread every time they hear the phrase “API key”.
+<!-- truncate -->
+The numbers speak even louder than the warnings<sup>1 </sup>:
+- <a href="https://www.silverfort.com/blog/insecurity-in-the-shadows-the-data-that-proves-why-non-human-identities-are-a-cybersecurity-priority/"><u>**Only 5.7%**</u></a> of organizations claim to accurately inventory all NHIs
+- <a href="https://nhimg.org/2025-state-of-non-human-identities-and-secrets-in-cybersecurity"><u>**97%**</u></a> of NHIs are over-privileged
+- <a href="https://nhimg.org/2025-state-of-non-human-identities-and-secrets-in-cybersecurity"><u>**91%**</u></a> of former-employee tokens are active
+- <a href="https://nhimg.org/2025-state-of-non-human-identities-and-secrets-in-cybersecurity"><u>**71%**</u></a> of NHIs aren’t rotated enough
+- <a href="https://cloudsecurityalliance.org/artifacts/state-of-non-human-identity-security-survey-report"><u>**Only 20%**</u></a> of organizations have formal processes for offboarding and revoking API keys
+- <a href="https://www.appviewx.com/esg-2024-report-on-managing-non-human-identities-for-an-effective-cybersecurity-program/"><u>**52%**</u></a> of organizations expect NHIs to increase by 20% in next 12 months
+
+
+### The invisible crisis
+Security starts with discovery. And the problem with NHI discovery is the sheer scale of the attack surface: NHIs now outnumber human identities by around 95:1.
+
+They’re everywhere, thanks to multi-cloud adoption, microservices, and DevOps pipelines, not to mention the countless third-party integrations. A single CI/CD process can spin up hundreds of ephemeral tokens in the blink of an eye. Today’s development speed creates tomorrow’s security nightmare.
+
+Yet, discovery is not glamorous. It is often ignored, thus creating a cosmic ripple effect that destroys the remaining two downstream pillars of NHI Management in its path: Remediation and Governance. 
+
+NHI Discovery rarely makes headlines - but its absence certainly does. In most organizations, NHIs are practically invisible. You can’t protect what you haven’t even inventoried.
+
+### Why NHI Discovery is harder than it sounds
+High-risk machine identities rarely come with warning signs. Unlike high-risk users, they don’t click links in phishing emails or post resignation rants on Slack. And when they have more privilege than they need or linger beyond their expiry date, they become prime targets for attackers. Almost everyone in the industry has a story of how they discovered a forgotten service account that still had production access years after the application was retired. 
+In theory, identifying machine identities should be as straightforward as listing all resources. The reality is starkly different. Consider just some of the major challenges in NHI Discovery today:
+
+- **Ephemeral identities**: Automated workflows create short-lived tokens and destroy them within minutes. Traditional IAM systems simply can’t keep up.
+
+
+- **Shadow NHIs**: Developers often bypass standard processes under delivery pressure, creating service accounts outside governance frameworks.
+
+
+- **Fragmented environments**: Multiple cloud providers, hybrid infrastructures, and siloed business units make visibility a Herculean task.
+
+
+- **Lack of contextual depth**: Even when identities are discovered, understanding their access privileges, resource relationships, and blast radius are more mountains to climb.
+
+### The Business Risk of Blind Spots
+A compromised identity is a security incident, but an undiscovered one is a ticking time bomb. Hardcoded secrets on GitHub, overprivileged service accounts, and orphaned tokens are now common entry points for attackers. It is not uncommon to trace the root cause of a breach back to an API token older than the DevOps employee who discovered it.
+
+Regulators and customers won’t care whether the compromised identity was human or machine. PCI-DSS, ISO 270001, GDPR, HIPAA, and every major compliance framework requires control over all identities. The audit requirement of maintaining inventories of all identities now includes robots, and auditors aren’t going to wait until you’re ready. 
+
+### Building a Discovery framework that works
+Discovery is not a one-time activity, to be done once and forgotten. NHI discovery is a process - which is continuous, dynamic, and self-propagating. Here’s what an effective discovery program must entail:
+
+#### Comprehensive Inventory
+Inventory all NHIs across cloud, on-prem, and hybrid environments - including temporary credentials in CI/CD pipelines. It is of the highest importance that your NHI discovery tool integrates with your orchestration platforms, IDEs, SaaS applications (e.g. Slack, Teams, Webex), ticketing software (e.g. Jira, Fresh Desk, Zoho Desk), and any other third-party services you work with. Your own internal NHIs can be sneaky enough, NHIs that handle third-party integrations are often simply a black hole. 
+#### Contextual Discovery and Mapping
+A list of identities without context is as useful as a guest list without seating arrangements. Map each NHI to its roles, endpoints, and relationships. Identify access paths and the blast radius of each machine identity. The answer to the question “What could happen if this identity was compromised?” should be a keystroke away. 
+#### Blast Radius Visualization
+Reading text logs can often be a headache - and interpreting them an even bigger one. Manual interpretation of text-based logs is inefficient, time-consuming, error-prone, operationally unsustainable, and introduces interpretation risk. The problem is exacerbated if you are under a deadline with your Slack channels blowing up. An effective NHI security solution must be able to automatically correlate privilege data across all NHIs, and translate the information into an intuitive, visualized blast radius map. It should also possess capabilities to consolidate the data and provide collated reports - and integrate with monitoring tools such as SIEM. This provides a critical birds-eye view of potential risks in a visual format that is easy to grasp - both for you and your auditors. Such visualization enables quick impact assessment, reduces reaction times, accelerates decision-making, and aligns reporting with compliance and governance requirements. Even a few minutes or hours saved can be critical in high-impact cases. 
+#### Shadow Identity detection with non-intrusive scanning
+Security policies are often seen as speed bumps in the development roadmap. Your developers might create identities by bypassing your protocols and policies - if those policies interfere with their work. Such “shadow identities” frequently circumvent established logging, oversight, and control mechanisms - creating governance and compliance gaps. The best NHI tools operate with minimum friction and minimal interference in the development cycle - and are able to detect NHIs created outside formal workflows, while still working in the background. NHI security platforms must integrate directly with CI/CD pipelines and orchestration tools to monitor identity creation in real time and generate alerts for any non-standard provisioning activity. It is the responsibility of IT and DevOps, not developers, to ensure that security is perceived as an enabler, not a roadblock. 
+#### Continuous Scanning
+NHI discovery cannot be relegated to periodic audits. Machine identities can appear and disappear within seconds, rendering quarterly or even monthly reviews obsolete. A mature security posture demands automated, continuous scanning that provides real-time visibility across all environments. This includes dynamic inventory updates, event-driven monitoring, and integrated risk scoring to prioritize high-impact exposures. 
+### NHI Discovery: The bedrock of NHI Management
+NHI Discovery is not the end, it is the beginning. Without it, NHI Risk Remediation and NHI Governance are but fantasies. 
+
+NHIs will only grow in number and importance. The organizations that build robust discovery capabilities now will avoid tomorrow’s headlines, and the awkward boardroom questions that follow.
+
+After all, NHI ignorance is bliss - until it costs millions in fines, reputation, and jobs.
+
+<sub><b>Source:</b> <sup>1 </sup> Source: NHIMG, Cloud Security Alliance, 2024 ESG Survey Report </sub>

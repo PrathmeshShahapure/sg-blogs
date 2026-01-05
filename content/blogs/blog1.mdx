@@ -1,0 +1,112 @@
+---
+slug: securing-the-silent-majority
+title: "Securing the Silent Majority: The Importance of NHI Security in an interconnected world"
+authors: [stackguard]
+tags: [nhi, machine-identities, security, governance]
+description: Imposing order before disorder imposes itself - Governance as the Great Differentiator.
+image: /img/docusaurus-social-card.jpg
+date: 2025-09-01
+duration: 7 min read 
+---
+
+# Securing the Silent Majority: The Importance of NHI Security in an interconnected world
+
+---
+## Man and machine
+The world is flat, and the world of enterprise technology even flatter. Open borders, open communication, and open interfaces are the paradigms of the world today. The modern corporation resembles less a fortress and more an airport - teeming with travelers, luggage, and the occasional stowaway. Yet, among the crowd of users, applications, and devices, one cohort has quietly outgrown all others: Non-Human Identities (NHIs). These digital travellers - API keys, service accounts, bots, tokens, and credentials - now outnumber their human counterparts by as much as 100 to 1. 
+<!-- truncate -->
+These machine identities enable systems to talk to one another, often across enterprises and networks. They are the grease in the gears of modern infrastructure: API keys granting third-party integrations, service accounts authenticating workloads, and tokens driving automated CI/CD pipelines. They underpin everything from container orchestration to SaaS integrations. Without them, digital infrastructure would grind to a halt.
+
+## With great power comes great vulnerability
+Unfortunately for many enterprises, such importance ascribed to NHIs is outdone only by the lack of importance given to their security. Identity management systems that dutifully require a human to “prove you are not a robot” remain curiously absent while dealing with actual robots. 
+
+While human identities are often subject to extensive security and governance policies, including robust onboarding and onboarding processes, rigorous security checks, and comprehensive lifecycle management - Non-Human Identities receive a fraction of such scrutiny and attention. 
+
+Until of course, a breach hits. But by then it is too little, too late. The reputation of the brand, and of the IT Security team within the brand, has already suffered.
+
+## Why and where NHIs can be compromised
+It is often claimed that scale is a good problem to have. As organizations embrace multi-cloud architectures, DevOps practices, and automation, NHIs have exploded in number. A typical large enterprise might have tens of thousands of machine identities. Yet, this comes with its own set of problems - that are often multiplied by the scale itself. 
+
+Many NHIs are ephemeral, created and destroyed by automated workflows faster than anyone can track. Some CI/CD pipelines can create and retire hundreds of temporary credentials in a single deployment cycle. The result is an identity sprawl so vast that it dwarfs human accounts.
+
+If the sheer scale of NHIs wasn’t enough, they also lack the telltale signs of human risk: no phishing susceptibility, no disgruntled Slack messages, no suspicious email forwards. As a result, security teams often treat them as harmless background noise. Governance frameworks built for human access control seldom extend to NHIs, creating a blind spot. Attackers, however, have 20/20 vision when it comes to exploiting that gap.
+
+Security executives often lament that they can recite every password policy in their organization while half asleep, but ask them where their API keys are - and they’ll need divine intervention. Forgotten service accounts from decommissioned applications often remain active for years - while still granting production database access. It’s a Dev-Sec Tug-of-war: Pushing code faster means NHIs are created in seconds - but cleaning up their mess takes months, or worse, a breach report.
+
+## How NHIs are compromised
+If Hollywood has taught us anything, it is that villains prefer the path of least resistance. In cybersecurity, that path increasingly runs through NHIs.
+Attackers typically exploit one of three weaknesses:
+- **Credential Sprawl**: Hardcoded secrets buried in code repositories, often lurking like landmines in GitHub. A 2024 GitGuardian report revealed 23 million secrets exposed in public repositories.
+
+
+- **Overprivileged Access**: NHIs routinely possess far more permissions than necessary - which attackers are happy to gobble up. CyberArk’s 2025 Identity Security Landscape report states that nearly 50% of machine identities have sensitive or elevated access. And as everyone in the industry would suspect, this is likely an undercount. 
+
+
+- **Lifecycle Neglect**: Forgotten tokens that never expire, zombie service accounts, and stale credentials are common. If these sound like relics of past projects, they are also ticking time bombs. The 2024 GitGuardian report found that 70% of publicly exposed tokens were still valid when discovered.
+
+## The catastrophic cost of failure
+A single stolen API key might grant access to production systems, enabling lateral movement and data exfiltration. Unlike humans, NHIs rarely trigger anomaly detection systems because their activity appears normal, such as moving large volumes of data, spinning up workloads, or accessing production systems. It can be difficult for IT admins as well as security tools to detect anomalies. 
+
+Security audits often discover active tokens that still grant production access - even for applications decommissioned years ago. The SolarWinds attack may have been the poster child for supply-chain compromises, but 2025 headlines are even more unnerving. The “Golden dMSA” flaw in Windows Server 2025 enabled attackers to escalate privileges and brute-force passwords of managed service accounts in minutes. The passwords were static, had no expiry date, and came with added bonus: brittle cryptography, with only 1,024 (not a typo) possible combinations. 
+
+
+## The Importance of securing NHIs
+A compromised machine identity is the equivalent of leaving the keys to your kingdom under the doormat - and then telling everyone that your keys are under the doormat. Entire security teams have been replaced due to breaches that occurred because the organization lacked proper NHI security.  
+
+The danger is clear and present. The business risk is stark, and the cost of failure overwhelming. Regulatory frameworks such as GDPR and CCPA make no distinction between breaches caused by human error or machine negligence. Reputational damage cares even less. If the phrase “API key exposed” appears in a headline next to a company name, investors will not find solace in semantics.
+
+
+## The path to NHI security and governance
+Securing NHIs is securing your future. A practical GRC framework for NHIs must include:
+### I. NHI Discovery:
+
+- **Maintaining a comprehensive inventory** : You can’t secure what you can’t see. Establish a real-time inventory of all NHIs in your organization - including temporary identities created by CI/CD pipelines.
+
+
+- **Mapping NHIs contextually**: Track each identity’s relationships, access paths, and blast radius in real time. Monitor what resources it can access, which workloads it touches, and the scope of its privilege. 
+
+
+- **Detecting shadow identities**: Identify orphaned service accounts and tokens that bypass standard provisioning processes.
+
+
+- **Enforcing continuous scanning**: NHI Discovery is an ongoing process. Implement automated tools for constant discovery, as new identities can appear and disappear within seconds in automated environments
+
+
+
+### II. NHI Risk Remediation
+
+
+- **Rotating secrets and enforcing expiry**: Rotate credentials regularly and enforce token expiration for all machine identities. 
+
+
+- **Enforcing Least Privilege**: Limit NHI privilege to the bare minimum, apply granular role-based access controls, and keep access on the need-to-know basis - just as it is for humans.
+
+
+- **Removing stale identities**: Decommission unused or expired machine identities immediately to shrink the attack surface. These are ticking time bombs and often overlooked, and the easiest targets for attackers. 
+
+
+- **Securely storing credentials**: Eliminate hardcoded secrets and centralize all credentials in secure vaults integrated with automation workflows.
+
+
+
+### III. NHI Governance 
+
+
+- **Ensuring Lifecycle Management**: Implement automated provisioning and deprovisioning policies, ensuring every NHI has a defined lifespan and an audit trail
+
+
+- **Ensuring policy enforcement at scale**: Apply standardized policies across all environments - whether cloud, on-prem, and hybrid
+
+
+- **Monitoring behaviors and detecting anomalies**: Establish baselines for normal machine behavior to detect anomalies 
+
+
+- **Being compliant and audit ready**: Maintain detailed logs and compliance mappings for all machine identities to avoid regulatory gaps
+
+
+
+## Conclusion
+
+Once upon a time, NHIs were the heroes of digital transformation. Today, they are the new battleground. Their scale, opacity, and ubiquity make them both indispensable and risky. If you treat NHI security as an afterthought - your attackers will treat it as a priority. 
+
+NHI governance will define the winners and losers of tomorrow’s cyber landscape. Machine identities may not talk - but regulators, investors, and customers certainly will.
