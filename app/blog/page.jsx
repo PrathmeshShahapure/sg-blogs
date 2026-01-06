@@ -7,7 +7,7 @@ export default function BlogPage() {
   console.log(blogs);
 
   return (
-    <div className="min-h-screen container-content bg-white mt-[80px] pb-16  flex flex-col items-center">
+    <div className="min-h-screen container-content bg-white pt-[80px] pb-16  flex flex-col items-center">
       <div className=" relative w-1/2 aspect-[16/9]">
         <Image
           src="/assets/blogs/BlogHeroImg.svg"
@@ -33,6 +33,7 @@ export default function BlogPage() {
           <Link
             key={blog.slug}
             href={`/blog/${blog.slug}`}
+            scroll={true}
             className=" flex flex-col flex-1 border  border-gray-300 rounded-xl p-6 hover:shadow-xl transition"
           >
             <div className=" relative w-full aspect-[16/9]">
