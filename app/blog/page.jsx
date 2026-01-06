@@ -4,7 +4,6 @@ import { getAllBlogs } from "@/lib/getBlogs";
 
 export default function BlogPage() {
   const blogs = getAllBlogs();
-  console.log(blogs);
 
   return (
     <div className="min-h-screen container-content bg-white pt-[80px] pb-16  flex flex-col items-center">
