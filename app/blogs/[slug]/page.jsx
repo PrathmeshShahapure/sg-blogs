@@ -2,18 +2,21 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypeSlug from "rehype-slug";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { getBlogBySlug } from "@/lib/getBlogs";
+import { getBlogBySlug, getAllBlogs } from "@/lib/getBlogs";
 import { getToc } from "@/lib/getToc";
 import BlogSidebar from "@/app/components/blogCom/BlogSidebar";
+import BlogListClient from "../BlogListClient";
 
 export default async function SingleBlogPage({ params }) {
   const { slug } = await params;
   const blog = getBlogBySlug(slug);
-  const toc = getToc(blog.content);
+  const allBlogs = getAllBlogs();
 
   if (!blog) {
     notFound();
   }
+
+  const toc = getToc(blog.content);
 
   return (
     <div className="min-h-screen container-content bg-white pt-[120px] pb-16">
@@ -35,11 +38,11 @@ export default async function SingleBlogPage({ params }) {
                 {blog.duration && (
                   <span className="text-sm sm:text-base">{blog.duration}</span>
                 )}
-                {blog.authors && Array.isArray(blog.authors) && (
+                {/* {blog.authors && Array.isArray(blog.authors) && (
                   <span className="text-sm sm:text-base">
                     By {blog.authors.join(", ")}
                   </span>
-                )}
+                )} */}
               </div>
 
               {/* Tags
@@ -90,8 +93,23 @@ export default async function SingleBlogPage({ params }) {
               />
             </div>
           </article>
-        </div>
-      </div>
+          </div>
+          </div>
+          {/* Related/Other Blog Posts */}
+          {allBlogs.length > 1 && (
+            <div className="mt-16 pt-8 border-t border-gray-300">
+              <h2 className="text-2xl sm:text-3xl font-medium mb-8 text-[#2E2E2E]">
+                More Articles
+              </h2>
+              <BlogListClient 
+                blogs={allBlogs} 
+                excludeSlug={slug}
+                showFilters={false}
+              />
+            </div>
+          )}
+        
+      
     </div>
   );
 }

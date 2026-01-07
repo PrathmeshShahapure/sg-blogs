@@ -34,7 +34,7 @@ const Navbar = () => {
       <nav className="  font-poppins text-base   lg:text-xl bg-[white] flex items-center justify-between h-9 my-5 px-4 md:px-5 lg:px-10">
         <div>
           <Link
-            href="/"
+             href="https://stackguard.io"
             onClick={() => setIsOpen(false)}
             className="flex items-center align-center place-items-center gap-1 outline-none"
           >
@@ -108,7 +108,7 @@ const Navbar = () => {
             {isResourcesOpen && (
               <div className="absolute top-full left-0 mt-1 w-32 bg-white rounded-md shadow-lg py-2 z-50">
                 <Link
-                  href="/blog"
+                  href="/blogs"
                   className={`block px-4 py-2 transition cursor-pointer ${
                     isActive("/blog")
                       ? "bg-gray-100 text-[#44087D] font-bold"
@@ -116,7 +116,7 @@ const Navbar = () => {
                   }`}
                   onClick={() => setIsResourcesOpen(false)}
                 >
-                  Blog
+                  Blogs
                 </Link>
                 <Link
                   href="/docs"
@@ -225,7 +225,7 @@ const Navbar = () => {
             {isResourcesOpen && (
               <div className="ml-4 mt-2 space-y-2">
                 <Link
-                  href="/blog"
+                  href="/blogs"
                   className={`block py-1 transition cursor-pointer ${
                     isActive("/blog")
                       ? "font-bold text-[#44087D]"
@@ -236,7 +236,7 @@ const Navbar = () => {
                     setIsResourcesOpen(false);
                   }}
                 >
-                  Blog
+                  Blogs
                 </Link>
                 <Link
                   href="/docs"

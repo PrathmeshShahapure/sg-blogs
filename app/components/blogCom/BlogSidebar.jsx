@@ -1,3 +1,4 @@
+"use client";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,8 +7,13 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { useActiveHeading } from "@/hooks/useActiveHeading";
+import { CopyLinkButton} from "@/lib/shareLinks";
 
 export default function BlogSidebar({title,toc}) {
+   const ids = toc.map((item) => item.id);
+   const activeId = useActiveHeading(ids);
+
   return (
     <div className="relative mb-[100px] w-[20%]">
     <aside className="hidden lg:block w- sticky top-[150px] h-fit">
@@ -16,13 +22,13 @@ export default function BlogSidebar({title,toc}) {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              <BreadcrumbLink  href="https://stackguard.io">Home</BreadcrumbLink>
             </BreadcrumbItem>
 
             <BreadcrumbSeparator />
 
             <BreadcrumbItem>
-              <BreadcrumbLink href="/blog">Blog</BreadcrumbLink>
+              <BreadcrumbLink href="/blogs">Blogs</BreadcrumbLink>
             </BreadcrumbItem>
 
             <BreadcrumbSeparator />
@@ -35,7 +41,6 @@ export default function BlogSidebar({title,toc}) {
 
 
         {/* Table of Contents */}
-          {/* TOC */}
         {toc?.length > 0 && (
           <div className="">
             <p className="text-base  font-medium text-gray-900 mb-2">
@@ -50,7 +55,11 @@ export default function BlogSidebar({title,toc}) {
                 >
                   <a
                     href={`#${item.id}`}
-                    className="text-gray-600 hover:text-gray-900"
+                    className={`block transition-colors ${
+                    activeId === item.id
+                      ? "text-[var(--color-secondary)] font-medium"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
                   >
                     {item.text}
                   </a>
@@ -61,10 +70,9 @@ export default function BlogSidebar({title,toc}) {
         )}
 
         {/* Share */}
-        <div>
-          <button className="w-full rounded-md border px-4 py-2 text-sm hover:bg-gray-50">
-            Share
-          </button>
+        <div className="w-full rounded-md border px-4 py-2 text-sm hover:bg-gray-50">
+          <h1 className="text-center">Share</h1>
+          <CopyLinkButton />
         </div>
 
       </div>
