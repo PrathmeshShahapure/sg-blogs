@@ -57,7 +57,7 @@ const Navbar = () => {
 
         <div className="hidden lg:flex gap-6">
           <Link
-            href="/platform"
+            href="https://stackguard.io/platform"
             className={`${
               isActive("/platform")
                 ? "font-bold text-[#44087D]"
@@ -67,14 +67,14 @@ const Navbar = () => {
             Platform
           </Link>
           <Link
-            href="/pricing"
+            href="https://stackguard.io/plans"
             className={`${
-              isActive("/pricing")
+              isActive("/plans")
                 ? "font-bold text-[#44087D]"
                 : "text-[#2E2E2E]"
             }`}
           >
-            Pricing
+            Plans
           </Link>
           <div
             className="relative group"
@@ -119,7 +119,7 @@ const Navbar = () => {
                   Blogs
                 </Link>
                 <Link
-                  href="/docs"
+                  href="https://stackguard.io/docs"
                   className={`block px-4 py-2 transition cursor-pointer ${
                     isActive("/docs")
                       ? "bg-gray-100 text-[#44087D] font-bold"
@@ -133,7 +133,7 @@ const Navbar = () => {
             )}
           </div>
           <Link
-            href="/partner"
+            href="https://stackguard.io/partner"
             className={`${
               isActive("/partner")
                 ? "font-bold text-[#44087D]"
@@ -143,7 +143,7 @@ const Navbar = () => {
             Partners
           </Link>
           <Link
-            href="/about"
+            href="https://stackguard.io/about"
             className={`${
               isActive("/about") ? "font-bold text-[#44087D]" : "text-[#2E2E2E]"
             }`}
@@ -154,7 +154,7 @@ const Navbar = () => {
 
         <div className="hidden lg:flex gap-4 items-center">
           <Link
-            href="/contact"
+            href="https://stackguard.io/contact"
             className="text-base  lg:text-lg px-5 md:px-6 py-2 rounded-full text-white bg-[#44087D]"
             type="button"
           >
@@ -176,7 +176,7 @@ const Navbar = () => {
       {isOpen && (
         <div className="lg:hidden font-poppins w-full x-1 mt-3 flex flex-col gap-3 bg-white border-t border-gray-200 py-4">
           <Link
-            href="/platform"
+            href="https://stackguard.io/platform"
             onClick={() => setIsOpen(false)}
             className={`px-4 text-base sm:text-lg ${
               isActive("/platform")
@@ -187,15 +187,15 @@ const Navbar = () => {
             Platform
           </Link>
           <Link
-            href="/pricing"
+            href="https://stackguard.io/plans"
             onClick={() => setIsOpen(false)}
             className={`px-4 text-base sm:text-lg ${
-              isActive("/pricing")
+              isActive("/plans")
                 ? "font-bold text-[#44087D]"
                 : "text-[#2E2E2E]"
             }`}
           >
-            Pricing
+            Plans
           </Link>
           <div className="px-4">
             <button
@@ -239,7 +239,7 @@ const Navbar = () => {
                   Blogs
                 </Link>
                 <Link
-                  href="/docs"
+                  href="https://stackguard.io/docs"
                   className={`block py-1 transition cursor-pointer ${
                     isActive("/docs")
                       ? "font-bold text-[#44087D]"
@@ -256,7 +256,7 @@ const Navbar = () => {
             )}
           </div>
           <Link
-            href="/partner"
+            href="https://stackguard.io/partner"
             onClick={() => setIsOpen(false)}
             className={`px-4 text-base sm:text-lg ${
               isActive("/partner")
@@ -267,7 +267,7 @@ const Navbar = () => {
             Partners
           </Link>
           <Link
-            href="/about"
+            href="https://stackguard.io/about"
             onClick={() => setIsOpen(false)}
             className={`px-4 text-base sm:text-lg ${
               isActive("/about") ? "font-bold text-[#44087D]" : "text-[#2E2E2E]"
@@ -276,7 +276,7 @@ const Navbar = () => {
             About us
           </Link>
           <Link
-            href="/contact"
+            href="https://stackguard.io/contact"
             onClick={() => setIsOpen(false)}
             className={`px-4 text-base sm:text-lg ${
               isActive("/contact")
