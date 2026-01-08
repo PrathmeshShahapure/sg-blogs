@@ -7,6 +7,31 @@ import { getToc } from "@/lib/getToc";
 import BlogSidebar from "@/app/components/blogCom/BlogSidebar";
 import BlogListClient from "../BlogListClient";
 
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const blog = getBlogBySlug(slug);
+
+  if (!blog) {
+    return {};
+  }
+
+  const siteUrl = "https://sg-blogs.vercel.app/";
+  const blogUrl = `${siteUrl}/blogs/${slug}`;
+
+  return {
+    title: blog.title,
+    description: blog.summary || blog.description,
+
+    twitter: {
+      card: "summary_large_image",
+      title: blog.title,
+      description: blog.summary || blog.description,
+      images: [blog.image || `${siteUrl}/assets/blogs/BlogHeroImg.svg`],
+    },
+  };
+}
+
+
 export default async function SingleBlogPage({ params }) {
   const { slug } = await params;
   const blog = getBlogBySlug(slug);
