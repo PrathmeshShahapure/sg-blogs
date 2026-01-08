@@ -10,26 +10,45 @@ import BlogListClient from "../BlogListClient";
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const blog = getBlogBySlug(slug);
+  if (!blog) return {};
 
-  if (!blog) {
-    return {};
-  }
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  const title = blog.title;
+  const description = blog.summary || blog.description;
+  const url = `${siteUrl}/blogs/${slug}`;
 
-  const siteUrl = "https://sg-blogs.vercel.app/";
-  const blogUrl = `${siteUrl}/blogs/${slug}`;
+  const image = blog.image
+    ? `${siteUrl}${blog.image}`
+    : `${siteUrl}/assets/blogs/BlogHeroImg.png`;
 
   return {
-    title: blog.title,
-    description: blog.summary || blog.description,
+    title,
+    description,
+
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "article",
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
 
     twitter: {
       card: "summary_large_image",
-      title: blog.title,
-      description: blog.summary || blog.description,
-      images: [blog.image || `${siteUrl}/assets/blogs/BlogHeroImg.svg`],
+      title,
+      description,
+      images: [image],
     },
   };
 }
+
 
 
 export default async function SingleBlogPage({ params }) {
