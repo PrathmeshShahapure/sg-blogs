@@ -8,7 +8,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { useActiveHeading } from "@/hooks/useActiveHeading";
-import { CopyLinkButton} from "@/lib/shareLinks";
+import { ShareButtons } from "@/lib/shareLinks";
 
 export default function BlogSidebar({title,toc}) {
    const ids = toc.map((item) => item.id);
@@ -70,9 +70,9 @@ export default function BlogSidebar({title,toc}) {
         )}
 
         {/* Share */}
-        <div className="w-full rounded-md border px-4 py-2 text-sm hover:bg-gray-50">
-          <h1 className="text-center">Share</h1>
-          <CopyLinkButton />
+        <div className="w-full rounded-md border pb-4 py-2 text-sm hover:bg-gray-50">
+          <h1 className="text-center ">Share</h1>
+          <ShareButtons />
         </div>
 
       </div>
