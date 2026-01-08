@@ -23,6 +23,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Blogs - Security Platform Blogs | StackGuard",
   description: "Read StackGuard blogs on cloud security, identity protection, compliance, and security platform plans. Practical insights, best practices, and expert guidance",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL),
 };
 
 export default function RootLayout({ children }) {

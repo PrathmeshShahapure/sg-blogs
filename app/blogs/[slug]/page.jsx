@@ -11,7 +11,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const blog = getBlogBySlug(slug);
   if (!blog) return {};
-
+  // console.log(blog);
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
   const title = blog.title;
   const description = blog.summary || blog.description;
