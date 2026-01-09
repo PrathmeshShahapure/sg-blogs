@@ -96,17 +96,17 @@ export default function BlogListClient({ blogs, excludeSlug, showFilters = true 
             key={blog.slug}
             href={`/blogs/${blog.slug}`}
             scroll={true}
-            className="flex flex-col flex-1 border border-gray-300 rounded-xl p-6 hover:shadow-xl transition"
+            className="overflow-hidden flex flex-col flex-1 border border-gray-300 rounded-xl hover:shadow-xl transition"
           >
             <div className="relative w-full aspect-[16/9]">
               <Image
-                src="/assets/blogs/BlogHeroImg.svg"
+                src={blog.image}
                 alt={blog.title}
                 fill
-                className="object-contain"
+                className="object-cover   rounded-t-xl overflow-hidden"
               />
             </div>
-
+            <div className=" p-6">
             <h2 className="text-xl font-medium mb-2 mt-4">{blog.title}</h2>
 
             <p className="text-gray-600 text-lg mb-2">{blog.description}</p>
@@ -114,6 +114,7 @@ export default function BlogListClient({ blogs, excludeSlug, showFilters = true 
             <div className="mt-auto flex justify-between text-[var(--color-primary)] text-sm">
               <p>{blog.duration}</p>
               <p>{blog.date}</p>
+            </div>
             </div>
           </Link>
         ))}
